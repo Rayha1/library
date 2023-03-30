@@ -9,7 +9,8 @@ import ecs100.*;
 public class GUI
 {
     // instance variables - replace the example below with your own
-    private Books Books;
+    private Books books;
+    private Book book;
 
     /**
      * Constructor for objects of class GUI
@@ -17,7 +18,7 @@ public class GUI
     public GUI()
     {
         // initialise instance variables
-        Books = new Books();
+        books = new Books();
         UI.initialise();
         //UI.addButton("ALL", Books::printALL);
         UI.addButton("Add", this::addBook);
@@ -37,7 +38,7 @@ public class GUI
         int quatity = UI.askInt("Quantity: "); // requires validation
         
         String imgFileName = UIFileChooser.open("Choose Image File: ");
-        Books.addBook(name, author, quatity, imgFileName);
+        books.addBook(name, author, quatity, imgFileName);
     }
     
     /**
@@ -46,8 +47,12 @@ public class GUI
      */
     public void findBook() {
         String bookName = UI.askString("Name of book: ");
-        if (Books.findBook(bookName)) {
+        if (books.findBook(bookName)) {
             UI.println("Found Book!");
+            book = books.getBook();
+            UI.println("Author: " + book.getAuthor());
+            UI.println("Quantity: " + book.getQuantity());
+            book.displayBook(); // Show books cover
         } else {
             UI.println("Book not found");
         }

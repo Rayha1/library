@@ -11,6 +11,7 @@ public class Books
     // instance variables - replace the example below with your own
     private HashMap<Integer, Book> booksMap; //declare books map
     private int currBookId; // store current id of book
+    private Book currBook; // store incident book
 
     /**
      * Constructor for objects of class Books
@@ -49,9 +50,18 @@ public class Books
     public boolean findBook(String name)  {
         for (int bookId : booksMap.keySet()) {
             if (booksMap.get(bookId).getName().equals(name)) {
+                currBook = booksMap.get(bookId);
                 return true;
             }
         }
         return false; // if not found
+    }
+    
+    /**
+     * getter for current book
+     * @ return the book found in book instance
+     */
+    public Book getBook() {
+        return this.currBook;
     }
 }
