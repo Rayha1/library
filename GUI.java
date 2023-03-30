@@ -21,10 +21,13 @@ public class GUI
         UI.initialise();
         //UI.addButton("ALL", Books::printALL);
         UI.addButton("Add", this::addBook);
-        //UI.addButton("Find", this::findBook);
+        UI.addButton("Find", this::findBook);
         UI.addButton("Quit", UI::quit);
     }
 
+    /**
+     * adds a book
+     */
     public void addBook() {
         final int MAX_QUANTITY = 999;
         
@@ -35,5 +38,18 @@ public class GUI
         
         String imgFileName = UIFileChooser.open("Choose Image File: ");
         Books.addBook(name, author, quatity, imgFileName);
+    }
+    
+    /**
+     * finds a book based on name
+     * prints out author, quantity, book cover
+     */
+    public void findBook() {
+        String bookName = UI.askString("Name of book: ");
+        if (Books.findBook(bookName)) {
+            UI.println("Found Book!");
+        } else {
+            UI.println("Book not found");
+        }
     }
 }

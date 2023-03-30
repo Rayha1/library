@@ -43,4 +43,12 @@ public class Book
         // initialise instance variables
         this(nm, auth, qty, null);
     }
+    
+    /**
+     * getter for name
+     * @return name if found
+     */
+    public String getName() {
+        return this.name;
+    }
 }

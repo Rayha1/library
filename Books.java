@@ -41,4 +41,17 @@ public class Books
         currBookId++; // increment book id
         booksMap.put(currBookId, new Book(nm, auth, qty));
     }
+    
+    /**
+     * looks for book in hashmap
+     * @return boleean if found
+     */
+    public boolean findBook(String name)  {
+        for (int bookId : booksMap.keySet()) {
+            if (booksMap.get(bookId).getName().equals(name)) {
+                return true;
+            }
+        }
+        return false; // if not found
+    }
 }
