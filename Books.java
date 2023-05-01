@@ -1,5 +1,4 @@
 import java.util.HashMap;
-
 /**
  * Write a description of class Books here.
  *
@@ -58,10 +57,41 @@ public class Books
     }
     
     /**
+     * get the title
+    */
+   
+    public String findTitle(int id) {
+        String title; // the title that gets returned
+        for (int bookId : booksMap.keySet()) {
+            if (bookId == id) {
+                title = booksMap.get(bookId).getName(); // ifnds 
+                return title;
+            }
+        }
+        return null;
+    } 
+    
+    /**
      * getter for current book
      * @ return the book found in book instance
      */
     public Book getBook() {
         return this.currBook;
     }
-}
+    
+    /**
+     * returns booksMap lenght
+     */
+    public int hashLen() {
+        int len = booksMap.size();
+        return len;
+    }
+    
+    /**
+     * returns booksMap entries to GUI
+     */
+    public HashMap<Integer, Book> returnList() {
+        return booksMap;
+    }
+    
+    }
